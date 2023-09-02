@@ -118,7 +118,7 @@ input[type='checkbox']:checked {
   outline: none;
   margin: 0;
   padding: 0;
-  color: #7c73e6;
+  color: #b346ff;
 }
 
 input[type='checkbox']:checked::before {
@@ -128,7 +128,7 @@ input[type='checkbox']:checked::before {
   height: 16px;
   text-align: center;
   line-height: 16px;
-  color: #7c73e6;
+  color: #b346ff;
   font-size: 20px;
   font-weight: bold;
 }
