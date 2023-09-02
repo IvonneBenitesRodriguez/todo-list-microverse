@@ -6,7 +6,7 @@ import { addNewActionWhenTaskAdded } from './removeTask.js';
 const addNewTaskToList = () => {
   const inputTodo = document.querySelector('.add-todo');
   const unOrderList = document.getElementById('todo-list');
-  
+
   inputTodo.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       const list = new List();
@@ -16,7 +16,7 @@ const addNewTaskToList = () => {
       };
       const task = list.addTaskToList(TodoList);
       const { li, a } = createTask(task);
-       unOrderList.appendChild(li);
+      unOrderList.appendChild(li);
       inputTodo.value = '';
       addEventComplete(li);
       addNewActionWhenTaskAdded(a);
