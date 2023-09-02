@@ -118,7 +118,7 @@ input[type='checkbox']:checked {
   outline: none;
   margin: 0;
   padding: 0;
-  color: pink;
+  color: #7c73e6;
 }
 
 input[type='checkbox']:checked::before {
@@ -128,7 +128,7 @@ input[type='checkbox']:checked::before {
   height: 16px;
   text-align: center;
   line-height: 16px;
-  color: pink;
+  color: #7c73e6;
   font-size: 20px;
   font-weight: bold;
 }
@@ -144,4 +144,5 @@ li.todo-do-list-item {
 
 i.fa-solid.fa-ellipsis-vertical {
   padding-left: 10px;
+  color: orange;
 }
