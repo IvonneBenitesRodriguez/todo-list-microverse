@@ -1,4 +1,3 @@
-import createElement from './createElement.js';
 import List from './list.js';
 
 const editDescription = (index, icon) => {
@@ -7,8 +6,8 @@ const editDescription = (index, icon) => {
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       list.UpdateDescriptionTask(Number(index), input.value);
-       const parent = input.parentNode;
-      console.log(parent);
+      const parent = input.parentNode;
+
       const label = document.createElement('label');
       const inputCheck = document.createElement('input');
       inputCheck.type = 'checkbox';
@@ -16,7 +15,7 @@ const editDescription = (index, icon) => {
       span.textContent = input.value;
       label.appendChild(inputCheck);
       label.appendChild(span);
-      
+
       parent.replaceChild(label, input);
       icon.classList.add('fa-ellipsis-vertical');
       icon.classList.remove('fa-trash-can');
