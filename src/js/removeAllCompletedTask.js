@@ -13,7 +13,6 @@ const clearAllCompletedTask = () => {
     const btns = document.querySelectorAll('.btn-task');
     btns.forEach((btn, i) => {
       btn.setAttribute('index', data[i].index);
-      console.log(btn);
     });
   });
 };
