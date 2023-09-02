@@ -6,6 +6,7 @@ import addNewTaskToList from './js/addNewTask.js';
 import { buttonAction } from './js/removeTask.js';
 import clearAllCompletedTask from './js/removeAllCompletedTask.js';
 
+
 iterateTasks();
 
 draggedItem();
@@ -17,3 +18,4 @@ addNewTaskToList();
 eventComplete();
 
 clearAllCompletedTask();
+
