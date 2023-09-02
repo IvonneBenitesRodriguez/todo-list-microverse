@@ -1,4 +1,4 @@
-import createElement from './createElement.js';
+// import createElement from './createElement.js';
 import List from './list.js';
 
 const editDescription = (index, icon) => {
@@ -11,7 +11,7 @@ const editDescription = (index, icon) => {
       const parent = input.parentNode;
       input.remove();
       const label = document.createElement('label');
-      console.log(label);
+
       const inputCheck = document.createElement('input');
       inputCheck.type = 'checkbox';
       const span = document.createElement('span');
@@ -19,7 +19,7 @@ const editDescription = (index, icon) => {
       label.appendChild(inputCheck);
       label.appendChild(span);
       parent.insertBefore(label, parent.firstChild);
-    
+
       icon.classList.add('fa-ellipsis-vertical');
       icon.classList.remove('fa-trash-can');
     }
