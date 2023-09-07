@@ -31,4 +31,4 @@ const clearAllCompletedTask = () => {
 };
 
 // Export the clearAllCompletedTask function
-export default clearAllCompletedTask;
+module.exports = clearAllCompletedTask
