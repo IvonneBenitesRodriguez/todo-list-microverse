@@ -1,4 +1,4 @@
-//const clearAllCompletedTask = require('./clearAllCompletedTask.js');
+const clearAllCompletedTask = require('./clearAllCompletedTask.js');
 
 // Mock the List class
 jest.mock(' ./js/list', () => {
