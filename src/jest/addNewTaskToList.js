@@ -4,7 +4,6 @@ import List from '../js/list.js';
 import { addNewActionWhenTaskAdded } from '../js/removeTask.js';
 
 const addNewTaskToList = (inputTodo, unOrderList) => {
-  
   inputTodo.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       const list = new List();
