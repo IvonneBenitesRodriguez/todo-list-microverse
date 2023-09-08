@@ -1,4 +1,4 @@
-import List from './List';
+import List from '../js/List';
 
 describe('List', () => {
   let list;
@@ -48,7 +48,7 @@ describe('List', () => {
     expect(updatedData.find((task) => task.index === 1).description).toBe(newDescription);
   });
 
-  // Write more tests for other methods needed
+  // Write more tests for other methods neede
 
   afterAll(() => {
     // Clean up if necessary
