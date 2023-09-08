@@ -1,63 +1,34 @@
-const clearAllCompletedTask = require('./clearAllCompletedTask.js');
+import { handleClearButtonClick } from './clearAllCompletedTask.js';
 
-// Mock the List class
-jest.mock(' ./js/list', () => {
-  return jest.fn().mockImplementation(() => {
-    return {
-      removeAllCompletedTask: jest.fn().mockReturnValue([]),
-    };
-  });
-});
+// Mock the List class and list object
+jest.mock('../js/list.js', () => ({
+  default: jest.fn(() => ({
+    removeAllCompletedTask: jest.fn().mockReturnValue([]),
+  })),
+}));
 
-// Mock the document object and related methods
-const mockQuerySelector = jest.fn();
-const mockAddEventListener = jest.fn();
-const mockRemove = jest.fn();
+// test cases for handleClearButtonClick
 
-beforeEach(() => {
-  global.document = {
-    querySelector: mockQuerySelector,
-  };
-  global.document.querySelector.mockImplementation(mockQuerySelector);
-});
+describe('handleClearButtonClick', () => {
+  it('should remove completed tasks and update attributes', () => {
+    // Mock DOM elements and setup as needed
+    const completedTask1 = document.createElement('div');
+    completedTask1.className = 'completed';
 
-beforeAll(() => {
-  global.document.addEventListener = mockAddEventListener;
-});
+    const completedTask2 = document.createElement('div');
+    completedTask2.className = 'completed';
 
-afterEach(() => {
-  mockQuerySelector.mockClear();
-  mockAddEventListener.mockClear();
-  mockRemove.mockClear();
-});
+    document.body.appendChild(completedTask1);
+    document.body.appendChild(completedTask2);
 
-describe('clearAllCompletedTask', () => {
-  it('should clear all completed tasks', () => {
-    // Mock the elements and their behavior
-    const mockClearButton = document.createElement('button');
-    mockClearButton.className = 'btn-clear';
+    // Mock list object
+    const mockRemoveAllCompletedTask = jest.fn().mockReturnValue([]);
+    const list = { removeAllCompletedTask: mockRemoveAllCompletedTask };
 
-    const mockCompletedTask1 = document.createElement('div');
-    mockCompletedTask1.className = 'completed';
-    const mockCompletedTask2 = document.createElement('div');
-    mockCompletedTask2.className = 'completed';
+    handleClearButtonClick(list);
 
-    mockQuerySelector.mockReturnValueOnce(mockClearButton);
-    mockQuerySelector.mockReturnValueOnce([mockCompletedTask1, mockCompletedTask2]);
+    expect(mockRemoveAllCompletedTask).toHaveBeenCalled();
 
-    // Call the function
-    clearAllCompletedTask();
-
-    // Check if the List class constructor was called
-    expect(require('./list')).toHaveBeenCalled();
-
-    // Check if removeAllCompletedTask method was called
-    expect(require('./list').mock.instances[0].removeAllCompletedTask).toHaveBeenCalled();
-
-    // Check if elements were removed
-    expect(mockRemove).toHaveBeenCalledTimes(2);
-
-    // Check if event listener was added
-    expect(mockAddEventListener).toHaveBeenCalledWith('click', expect.any(Function));
+    expect(document.querySelectorAll('.completed').length).toBe(0);
   });
 });
