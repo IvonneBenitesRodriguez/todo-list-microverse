@@ -48,7 +48,7 @@ describe('List', () => {
     expect(updatedData.find((task) => task.index === 1).description).toBe(newDescription);
   });
 
-  // Write more tests for other methods if needed
+  // Write more tests for other methods needed
 
   afterAll(() => {
     // Clean up if necessary
