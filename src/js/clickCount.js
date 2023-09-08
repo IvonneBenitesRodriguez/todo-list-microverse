@@ -2,13 +2,28 @@ import editDescription from './editLocalStorage.js';
 import List from './list.js';
 import removeTaskFromLocalStorage from './removeTaskFromLocalStorage.js';
 
-const convertTextToInput = (parent, index) => {
-  const input = document.createElement('input');
-  const list = new List();
-  const getData = list.getTaskByIndex(Number(index));
-  input.value = getData[0].description;
-  input.className = 'edit-todo';
-  parent.insertBefore(input, parent.firstChild);
+const convertTextToInput = (icon) => {
+  // Get the index of the task associated with the icon
+  const index = icon.getAttribute('data-index');
+  // Ensure that index is a valid number
+  if (!Number.isNaN(Number(index))) {
+    const list = new List();
+    const getData = list.getTaskByIndex(Number(index));
+    // Check if the getData is defined and has elements
+    if (getData && getData.length > 0) {
+      const parent = icon.parentNode;
+      const input = document.createElement('input');
+      input.value = getData[0].description;
+      input.className = 'edit-todo';
+      parent.insertBefore(input, parent.firstChild);
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          list.UpdateDescriptionTask(Number(index), input.value);
+        }
+      });
+    }
+  }
 };
 
 const edit = (icon, btn) => {
