@@ -1,4 +1,3 @@
-import { testUpdateCompleteTask } from './testUpdateCompleteTask.js';
 import List from '../js/list.js';
 
 // Create an instance of the List class for testing
@@ -22,19 +21,19 @@ describe('List Class', () => {
 
     // Assert: Check the updated state
     const updatedData = myList.getLocalStorage();
-    const updatedTask = updatedData.find(task => task.index === indexToUpdate);
-    
+    const updatedTask = updatedData.find((task) => task.index === indexToUpdate);
+
     expect(updatedTask.completed).toBe(true);
   });
 
   // Test case for UpdateUnCompleteTask function
   test('UpdateUnCompleteTask should update task completed status to false', () => {
-  const indexToUpdate = 1;
-  myList.UpdateUnCompleteTask(indexToUpdate);
+    const indexToUpdate = 1;
+    myList.UpdateUnCompleteTask(indexToUpdate);
 
-  const updatedData = myList.getLocalStorage();
-  const updatedTask = updatedData.find(task => task.index === indexToUpdate);
+    const updatedData = myList.getLocalStorage();
+    const updatedTask = updatedData.find((task) => task.index === indexToUpdate);
 
-  expect(updatedTask.completed).toBe(false);
+    expect(updatedTask.completed).toBe(false);
   });
 });
